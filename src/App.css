@@ -46,3 +46,69 @@
 .nhk {
   min-height: 780px;
 }
+
+/* media query */
+@media (max-width: 1455px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1350px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1270px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1190px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1105px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1030px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 950px) {
+  html {
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 905px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 380px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 340px) {
+  html {
+    font-size: 7.4px;
+  }
+}
