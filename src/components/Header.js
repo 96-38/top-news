@@ -11,7 +11,7 @@ export const Header = () => {
           <div className="header__logo">
             <img className="header__logo__img" src={logo} alt="logo" />
             <a className="header__logo__title" href="./">
-              <h1>News Portal</h1>
+              <h1>Top News</h1>
             </a>
           </div>
         </div>
