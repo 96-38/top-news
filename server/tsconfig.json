@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "commonjs",
+    "allowJs": true,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "compileOnSave": true,
+  "include": ["src"]
+}
