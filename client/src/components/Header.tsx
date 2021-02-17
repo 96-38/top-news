@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import '../reset.css';
 import './css/header.css';
 import logo from './img/Icon.svg';

@@ -1,19 +1,19 @@
 //modules
-import * as React from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //components
-import { Header } from './components/Header.js';
-import { Card } from './components/Card.js';
-import { Nhk } from './components/Nnk.js';
-import { Yahoo } from './components/Yahoo.js';
-import { Livedoor } from './components/Livedoor.js';
-import { Excite } from './components/Excite.js';
-import { Mainichi } from './components/Mainichi.js';
-import { Nikkei } from './components/Nikkei.js';
-import { Sankei } from './components/Sankei.js';
-import { Asahi } from './components/Asahi.js';
-import { Yomiuri } from './components/Yomiuri.js';
-import { Hokkoku } from './components/Hokkoku.js';
+import { Header } from './components/Header';
+import { Card } from './components/Card';
+import { Nhk } from './components/Nnk';
+import { Yahoo } from './components/Yahoo';
+import { Livedoor } from './components/Livedoor';
+import { Excite } from './components/Excite';
+import { Mainichi } from './components/Mainichi';
+import { Nikkei } from './components/Nikkei';
+import { Sankei } from './components/Sankei';
+import { Asahi } from './components/Asahi';
+import { Yomiuri } from './components/Yomiuri';
+import { Hokkoku } from './components/Hokkoku';
 //static assets
 import './reset.css';
 import './App.css';
