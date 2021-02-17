@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Loader } from './Loader';
 import { Card } from './Card';
@@ -7,7 +7,7 @@ import nikkei from './img/nikkei.jpg'; //modify here
 
 //modify component Name
 export const Nikkei = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<{ [key: string]: string }[]>([]);
 
   //modify path
   const getData = () => {
@@ -32,7 +32,7 @@ export const Nikkei = () => {
               key={data.textContent}
               title={data.textContent}
               link={data.href}
-              img={data.srcset}
+              img={data.srcset || nikkei}
               target="_blank"
               fontSize="1.5rem"
               fontWeight="normal"

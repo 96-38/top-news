@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Loader } from './Loader';
 import { Card } from './Card';
@@ -7,7 +7,7 @@ import hokkoku from './img/hokkoku.jpg'; //modify here
 
 //modify component Name
 export const Hokkoku = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<{ [key: string]: string }[]>([]);
 
   //modify path
   const getData = () => {
