@@ -18,6 +18,8 @@
 ## 使用した技術
 - [React](https://github.com/facebook/react)
 
+- [TypeScript](https://github.com/microsoft/TypeScript)
+
 - [Puppeteer](https://github.com/puppeteer/puppeteer)
 
 - [Express](https://github.com/expressjs/express)
@@ -30,10 +32,13 @@
 Express を使用するサーバー と React の開発サーバー(webpack-dev-server) の 2 つを起動する必要があります。<br>リポジトリをローカルにクローンした後、ターミナルを 2 窓用意して top-news ディレクトリでそれぞれ以下のコマンドを実行して下さい。
 
 ```
-node server.js
+cd server
+yarn
+node src/server.js
 ```
 
 ```
+cd client
 yarn
 yarn start
 ```
