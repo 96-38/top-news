@@ -1,4 +1,3 @@
-//YahooNewsトップページ,NHKのニュースをスクレイピングして表示するアプリ
 const express = require('express');
 const puppeteer = require('puppeteer');
 const path = require('path');
@@ -307,10 +306,13 @@ app.get('/api/mainichi', (req, res) => {
       }
     });
 
-    const titleSelector = '.headline-top > a';
-    const titleSelector2 = '.list-typeA > li ';
-    const anchorSelector = '.headline-top > a';
-    const anchorSelector2 = '.list-typeA > li > a';
+    const titleSelector =
+      '[data-cx-area="top-selection"] .toppickup-detail > .toppickup-title.mb-10';
+    const titleSelector2 =
+      '[data-cx-area="top-selection"] ul.toppickuplist > li h3';
+    const anchorSelector = '[data-cx-area="top-selection"] .toppickup a';
+    const anchorSelector2 =
+      '[data-cx-area="top-selection"] ul.toppickuplist > li a';
     const url = 'https://mainichi.jp/';
     const newsArray = await getNews(page, url, titleSelector, anchorSelector);
     const newsArray2 = await getNews(
@@ -320,7 +322,7 @@ app.get('/api/mainichi', (req, res) => {
       anchorSelector2
     );
     const newsArray3 = [...newsArray, ...newsArray2];
-    newsArray3.length = 9;
+    // newsArray3.length = 7;
 
     await res.json(newsArray3);
     await browser.close();
