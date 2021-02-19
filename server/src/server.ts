@@ -1,14 +1,14 @@
 import express from 'express';
-import { getYahoo } from './getYahoo.js';
-import { getNhk } from './getNhk.js';
-import { getLivedoor } from './getLivedoor.js';
-import { getExcite } from './getExcite.js';
-import { getMainichi } from './getMainichi.js';
-import { getNikkei } from './getNikkei.js';
-import { getSankei } from './getSankei.js';
-import { getAsahi } from './getAsahi.js';
-import { getYomiuri } from './getYomiuri.js';
-import { getHokkoku } from './getHokkoku.js';
+import { getYahoo } from './getYahoo';
+import { getNhk } from './getNhk';
+import { getLivedoor } from './getLivedoor';
+import { getExcite } from './getExcite';
+import { getMainichi } from './getMainichi';
+import { getNikkei } from './getNikkei';
+import { getSankei } from './getSankei';
+import { getAsahi } from './getAsahi';
+import { getYomiuri } from './getYomiuri';
+import { getHokkoku } from './getHokkoku';
 
 const app = express();
 

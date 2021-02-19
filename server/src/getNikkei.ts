@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import { getElmsSrcset } from './getElmsSrcset.js';
+import { getElmsSrcset } from './getElmsSrcset';
 
 export const getNikkei = (req, res) => {
   (async () => {

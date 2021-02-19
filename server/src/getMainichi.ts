@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
 export const getMainichi = (req, res) => {
   (async () => {
