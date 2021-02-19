@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getHokkoku = (req, res) => {
+export const getSankei = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
@@ -23,7 +23,6 @@ export const getHokkoku = (req, res) => {
           'script',
           'stylesheet',
           'texttrack',
-          'image',
         ].includes(request.resourceType())
       ) {
         request.abort();
@@ -32,13 +31,18 @@ export const getHokkoku = (req, res) => {
       }
     });
 
-    const titleSelector = '.top-news-list__item .top-news-list__title';
-    const anchorSelector = '.top-news-list__item > a';
-    const imgSelector = '.top-news-img-slider__item > img'; //ブラウザのconsoleでは取得できるが、なぜかうまく取得できない
-    const url = 'https://www.hokkoku.co.jp/';
-    const newsArray = await getElms(page, url, titleSelector, anchorSelector);
+    const titleSelector = '[data-tb-region="top"] .entry_title';
+    const anchorSelector = '[data-tb-region="top"] .entry_title > a';
+    const imgSelector = '[data-tb-region="top"]  .entry_img > figure > img';
+    const url = 'https://www.sankei.com/';
+    const newsArray = await getElms(
+      page,
+      url,
+      titleSelector,
+      anchorSelector,
+      imgSelector
+    );
 
-    newsArray.length = 8;
     await res.json(newsArray);
     await browser.close();
     console.log('Took', Date.now() - start, 'ms');

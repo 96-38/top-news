@@ -1,24 +1,27 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getNhk = (req, res) => {
+export const getExcite = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    //block css,resource
+    //block css,font
     await page.setRequestInterception(true);
     page.on('request', (request) => {
       if (
         [
           'texttrack',
+          'xhr',
           'eventsource',
           'websocket',
           'manifest',
           'fetch',
           'media',
+          'script',
+          'image',
           'stylesheet',
           'font',
         ].includes(request.resourceType())
@@ -29,19 +32,14 @@ export const getNhk = (req, res) => {
       }
     });
 
-    const titleSelector = '.content--list li em';
-    const anchorSelector = '.content--list li dd > a ';
-    const imgSelector = '.content--list > li > dl > dt > a > img ';
-    const url = 'https://www3.nhk.or.jp/news/';
-    const newsArray = await getElms(
-      page,
-      url,
-      titleSelector,
-      anchorSelector,
-      imgSelector
-    );
-    await browser.close();
+    const titleSelector = 'headline > ul > li > a > span';
+    const anchorSelector = 'headline > ul > li > a ';
+    const url = 'https://www.excite.co.jp/';
+    const newsArray = await getElms(page, url, titleSelector, anchorSelector);
+
+    newsArray.length = 10;
     await res.json(newsArray);
+    await browser.close();
     console.log('Took', Date.now() - start, 'ms');
   })();
 };

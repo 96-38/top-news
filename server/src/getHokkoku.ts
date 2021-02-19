@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getYomiuri = (req, res) => {
+export const getHokkoku = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
@@ -32,10 +32,13 @@ export const getYomiuri = (req, res) => {
       }
     });
 
-    const titleSelector = '.home-2020-prime-topnews > h3 > a';
-    const anchorSelector = '.home-2020-prime-topnews > h3 > a';
-    const url = 'https://www.yomiuri.co.jp/';
+    const titleSelector = '.top-news-list__item .top-news-list__title';
+    const anchorSelector = '.top-news-list__item > a';
+    const imgSelector = '.top-news-img-slider__item > img'; //ブラウザのconsoleでは取得できるが、なぜかうまく取得できない
+    const url = 'https://www.hokkoku.co.jp/';
     const newsArray = await getElms(page, url, titleSelector, anchorSelector);
+
+    newsArray.length = 8;
     await res.json(newsArray);
     await browser.close();
     console.log('Took', Date.now() - start, 'ms');

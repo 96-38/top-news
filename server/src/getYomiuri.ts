@@ -1,29 +1,29 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getExcite = (req, res) => {
+export const getYomiuri = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    //block css,font
+    // block resource
     await page.setRequestInterception(true);
     page.on('request', (request) => {
       if (
         [
-          'texttrack',
-          'xhr',
-          'eventsource',
-          'websocket',
-          'manifest',
-          'fetch',
-          'media',
-          'script',
-          'image',
-          'stylesheet',
           'font',
+          'media',
+          'xhr',
+          'fetch',
+          'websocket',
+          'eventsource',
+          'script',
+          'stylesheet',
+          'texttrack',
+          'image',
         ].includes(request.resourceType())
       ) {
         request.abort();
@@ -32,12 +32,10 @@ export const getExcite = (req, res) => {
       }
     });
 
-    const titleSelector = 'headline > ul > li > a > span';
-    const anchorSelector = 'headline > ul > li > a ';
-    const url = 'https://www.excite.co.jp/';
+    const titleSelector = '.home-2020-prime-topnews > h3 > a';
+    const anchorSelector = '.home-2020-prime-topnews > h3 > a';
+    const url = 'https://www.yomiuri.co.jp/';
     const newsArray = await getElms(page, url, titleSelector, anchorSelector);
-
-    newsArray.length = 10;
     await res.json(newsArray);
     await browser.close();
     console.log('Took', Date.now() - start, 'ms');

@@ -1,29 +1,26 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getAsahi = (req, res) => {
+export const getNhk = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
-
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    //block resource
+    //block css,resource
     await page.setRequestInterception(true);
     page.on('request', (request) => {
       if (
         [
-          'font',
-          'media',
-          'xhr',
-          'fetch',
-          'websocket',
-          'eventsource',
-          'script',
-          'stylesheet',
           'texttrack',
-          'image',
+          'eventsource',
+          'websocket',
+          'manifest',
+          'fetch',
+          'media',
+          'stylesheet',
+          'font',
         ].includes(request.resourceType())
       ) {
         request.abort();
@@ -32,10 +29,10 @@ export const getAsahi = (req, res) => {
       }
     });
 
-    const titleSelector = '.c-articleModule__title';
-    const anchorSelector = '.c-articleModule__title > a';
-    const imgSelector = '.c-articleModule__image > a > img';
-    const url = 'https://www.asahi.com/';
+    const titleSelector = '.content--list li em';
+    const anchorSelector = '.content--list li dd > a ';
+    const imgSelector = '.content--list > li > dl > dt > a > img ';
+    const url = 'https://www3.nhk.or.jp/news/';
     const newsArray = await getElms(
       page,
       url,
@@ -43,10 +40,8 @@ export const getAsahi = (req, res) => {
       anchorSelector,
       imgSelector
     );
-    newsArray.length = 7;
-
-    await res.json(newsArray);
     await browser.close();
+    await res.json(newsArray);
     console.log('Took', Date.now() - start, 'ms');
   })();
 };

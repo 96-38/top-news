@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getSankei = (req, res) => {
+export const getAsahi = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
@@ -9,7 +9,7 @@ export const getSankei = (req, res) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // block resource
+    //block resource
     await page.setRequestInterception(true);
     page.on('request', (request) => {
       if (
@@ -23,6 +23,7 @@ export const getSankei = (req, res) => {
           'script',
           'stylesheet',
           'texttrack',
+          'image',
         ].includes(request.resourceType())
       ) {
         request.abort();
@@ -31,10 +32,10 @@ export const getSankei = (req, res) => {
       }
     });
 
-    const titleSelector = '[data-tb-region="top"] .entry_title';
-    const anchorSelector = '[data-tb-region="top"] .entry_title > a';
-    const imgSelector = '[data-tb-region="top"]  .entry_img > figure > img';
-    const url = 'https://www.sankei.com/';
+    const titleSelector = '.c-articleModule__title';
+    const anchorSelector = '.c-articleModule__title > a';
+    const imgSelector = '.c-articleModule__image > a > img';
+    const url = 'https://www.asahi.com/';
     const newsArray = await getElms(
       page,
       url,
@@ -42,6 +43,7 @@ export const getSankei = (req, res) => {
       anchorSelector,
       imgSelector
     );
+    newsArray.length = 7;
 
     await res.json(newsArray);
     await browser.close();

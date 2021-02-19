@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import { getElms } from './getElms.js';
+import { getElms } from './getElms';
 
-export const getLivedoor = (req, res) => {
+export const getYahoo = (req, res) => {
   (async () => {
     //measure time
     const start = Date.now();
@@ -12,9 +12,19 @@ export const getLivedoor = (req, res) => {
     await page.setRequestInterception(true);
     page.on('request', (request) => {
       if (
-        ['media', 'script', 'image', 'stylesheet', 'font'].includes(
-          request.resourceType()
-        )
+        [
+          'texttrack',
+          'xhr',
+          'eventsource',
+          'websocket',
+          'manifest',
+          'fetch',
+          'media',
+          'script',
+          'image',
+          'stylesheet',
+          'font',
+        ].includes(request.resourceType())
       ) {
         request.abort();
       } else {
@@ -22,9 +32,9 @@ export const getLivedoor = (req, res) => {
       }
     });
 
-    const titleSelector = '.topTopicsList > .topicsList > li > a ';
-    const anchorSelector = '.topTopicsList > .topicsList > li > a';
-    const url = 'https://news.livedoor.com/';
+    const titleSelector = '.topics li';
+    const anchorSelector = '.topics li a ';
+    const url = 'https://news.yahoo.co.jp/';
     const newsArray = await getElms(page, url, titleSelector, anchorSelector);
 
     await browser.close();
