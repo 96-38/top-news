@@ -34,7 +34,7 @@ Express を使用するサーバー と React の開発サーバー(webpack-dev-
 ```
 cd server
 yarn
-node src/server.js
+yarn start
 ```
 
 ```
