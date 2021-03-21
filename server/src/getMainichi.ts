@@ -45,9 +45,25 @@ export const getMainichi = async () => {
   const anchorSelector = '[data-cx-area="top-selection"] .toppickup a';
   const anchorSelector2 =
     '[data-cx-area="top-selection"] ul.toppickuplist > li a';
+  // const imgSelector = '[data-cx-area="top-selection"] .toppickup-image > img';
+  // const imgSelector2 =
+  //   '[data-cx-area="top-selection"] ul.toppickuplist .toppickuplist-image  > img';
+
   const url = 'https://mainichi.jp/';
-  const newsArray = await getElms(page, url, titleSelector, anchorSelector);
-  const newsArray2 = await getElms(page, url, titleSelector2, anchorSelector2);
+  const newsArray = await getElms(
+    page,
+    url,
+    titleSelector,
+    anchorSelector
+    // imgSelector
+  );
+  const newsArray2 = await getElms(
+    page,
+    url,
+    titleSelector2,
+    anchorSelector2
+    // imgSelector2
+  );
   const newsArray3 = [...newsArray, ...newsArray2];
   // newsArray3.length = 7;
 

@@ -32,7 +32,7 @@ export const Mainichi = () => {
               key={data.textContent}
               title={data.textContent}
               link={data.href}
-              img={mainichi}
+              img={data.src || mainichi}
               target="_blank"
               fontSize="1.5rem"
               fontWeight="normal"
