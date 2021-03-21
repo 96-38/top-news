@@ -9,6 +9,7 @@
     "start": "ts-node src/server.ts"
   },
   "dependencies": {
+    "dayjs": "^1.10.4",
     "express": "^4.17.1",
     "ioredis": "^4.24.2",
     "puppeteer": "^7.1.0"
