@@ -10,14 +10,14 @@ import { getYomiuri } from './getYomiuri';
 import { getHokkoku } from './getHokkoku';
 
 (async () => {
-  getAsahi();
-  getYahoo();
-  getNhk();
-  getLivedoor();
-  getExcite();
-  getMainichi();
-  getNikkei();
-  getSankei();
-  getYomiuri();
-  getHokkoku();
+  await getAsahi();
+  await getYahoo();
+  await getNhk();
+  await getLivedoor();
+  await getExcite();
+  await getMainichi();
+  await getNikkei();
+  await getSankei();
+  await getYomiuri();
+  await getHokkoku();
 })();

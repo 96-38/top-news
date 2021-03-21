@@ -20,15 +20,15 @@ const getSankei_1 = require("./getSankei");
 const getYomiuri_1 = require("./getYomiuri");
 const getHokkoku_1 = require("./getHokkoku");
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    getAsahi_1.getAsahi();
-    getYahoo_1.getYahoo();
-    getNhk_1.getNhk();
-    getLivedoor_1.getLivedoor();
-    getExcite_1.getExcite();
-    getMainichi_1.getMainichi();
-    getNikkei_1.getNikkei();
-    getSankei_1.getSankei();
-    getYomiuri_1.getYomiuri();
-    getHokkoku_1.getHokkoku();
+    yield getAsahi_1.getAsahi();
+    yield getYahoo_1.getYahoo();
+    yield getNhk_1.getNhk();
+    yield getLivedoor_1.getLivedoor();
+    yield getExcite_1.getExcite();
+    yield getMainichi_1.getMainichi();
+    yield getNikkei_1.getNikkei();
+    yield getSankei_1.getSankei();
+    yield getYomiuri_1.getYomiuri();
+    yield getHokkoku_1.getHokkoku();
 }))();
 //# sourceMappingURL=getData.js.map
