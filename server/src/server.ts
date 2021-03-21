@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Redis from 'ioredis';
-import { getExcite } from './getExcite';
 import { getMainichi } from './getMainichi';
 import { getNikkei } from './getNikkei';
 import { getSankei } from './getSankei';
@@ -44,7 +43,12 @@ app.get('/api/livedoor', async (req, res) => {
 });
 
 //excite News
-app.get('/api/excite', getExcite);
+app.get('/api/excite', async (req, res) => {
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get('excite');
+  res.json(JSON.parse(data!));
+  console.log('took data from redis at ' + currentTime);
+});
 
 // mainichi
 app.get('/api/mainichi', getMainichi);
