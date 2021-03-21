@@ -9,7 +9,7 @@ import { getSankei } from './getSankei';
 import { getYomiuri } from './getYomiuri';
 import { getHokkoku } from './getHokkoku';
 
-(() => {
+(async () => {
   getAsahi();
   getYahoo();
   getNhk();
