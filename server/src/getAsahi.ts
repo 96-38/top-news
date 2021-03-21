@@ -11,7 +11,7 @@ export const getAsahi = async () => {
   //dayjs
   dayjs.extend(utc);
   dayjs.extend(timezone);
-  const now = dayjs().tz('Asia/Tokyo').format('YYYY_MM_DD_HH');
+  const now = dayjs().tz('Asia/Tokyo').format('YYYY/MM/DD_HH:mm:ss');
   console.log(`get Asahi at ${now}`);
 
   const browser = await puppeteer.launch();
@@ -54,9 +54,9 @@ export const getAsahi = async () => {
 
   //store json to redis
   const redis = new Redis(process.env.REDIS_URL);
-  await redis.set(`asahi_${now}`, JSON.stringify(newsArray));
+  await redis.set('asahi', JSON.stringify(newsArray));
 
   await browser.close();
   redis.disconnect();
-  console.log('Took', Date.now() - start, 'ms');
+  console.log('Took', Date.now() - start, 'ms (asahi)');
 };

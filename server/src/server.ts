@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Redis from 'ioredis';
-import { getYahoo } from './getYahoo';
 import { getNhk } from './getNhk';
 import { getLivedoor } from './getLivedoor';
 import { getExcite } from './getExcite';
@@ -23,7 +22,12 @@ const redis = new Redis(process.env.REDIS_URL);
 const app = express();
 
 //Yahoo News
-app.get('/api/yahoo', getYahoo);
+app.get('/api/yahoo', async (req, res) => {
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get('yahoo');
+  res.json(JSON.parse(data!));
+  console.log('took data from redis at ' + currentTime);
+});
 
 //NHK News
 app.get('/api/nhk', getNhk);
@@ -45,9 +49,8 @@ app.get('/api/sankei', getSankei);
 
 // asahi
 app.get('/api/asahi', async (req, res) => {
-  const now = dayjs().tz('Asia/Tokyo').format('YYYY_MM_DD_HH');
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
-  const data = await redis.get(`asahi_${now}`);
+  const data = await redis.get('asahi');
   res.json(JSON.parse(data!));
   console.log('took data from redis at ' + currentTime);
 });
