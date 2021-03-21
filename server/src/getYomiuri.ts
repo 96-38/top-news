@@ -14,10 +14,13 @@ export const getYomiuri = async () => {
   const now = dayjs().tz('Asia/Tokyo').format('YYYY/MM/DD_HH:mm:ss');
   console.log(`get Yomiuri at ${now}`);
 
-  const browser = await puppeteer.launch();
+  const launchConfig = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  };
+  const browser = await puppeteer.launch(launchConfig);
   const page = await browser.newPage();
 
-  // block resource
+  //block resource
   await page.setRequestInterception(true);
   page.on('request', (request) => {
     if (

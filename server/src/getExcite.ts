@@ -14,10 +14,13 @@ export const getExcite = async () => {
   const now = dayjs().tz('Asia/Tokyo').format('YYYY/MM/DD_HH:mm:ss');
   console.log(`get Excite at ${now}`);
 
-  const browser = await puppeteer.launch();
+  const launchConfig = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  };
+  const browser = await puppeteer.launch(launchConfig);
   const page = await browser.newPage();
 
-  //block css,font
+  //block resource
   await page.setRequestInterception(true);
   page.on('request', (request) => {
     if (
