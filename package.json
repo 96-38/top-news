@@ -1,0 +1,11 @@
+{
+  "name": "top-news",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "cd server && yarn install && yarn build && cd .. && cd client && yarn install && yarn build ",
+    "heroku-postbuild": "cd server && npm install && cd .. && cd client && npm install && npm run build",
+    "start": "node server/dist/server.js"
+  }
+}
