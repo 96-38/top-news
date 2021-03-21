@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Redis from 'ioredis';
-import { getYomiuri } from './getYomiuri';
 import { getHokkoku } from './getHokkoku';
 
 //dayjs
@@ -80,7 +79,12 @@ app.get('/api/asahi', async (req, res) => {
 });
 
 // yomiuri
-app.get('/api/yomiuri', getYomiuri);
+app.get('/api/yomiuri', async (req, res) => {
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get('yomiuri');
+  res.json(JSON.parse(data!));
+  console.log('took yomiuri from redis at ' + currentTime);
+});
 
 // hokkoku
 app.get('/api/hokkoku', getHokkoku);
