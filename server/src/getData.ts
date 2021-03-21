@@ -5,6 +5,7 @@ import { getLivedoor } from './getLivedoor';
 import { getExcite } from './getExcite';
 import { getMainichi } from './getMainichi';
 import { getNikkei } from './getNikkei';
+import { getSankei } from './getSankei';
 
 (() => {
   getAsahi();
@@ -14,4 +15,5 @@ import { getNikkei } from './getNikkei';
   getExcite();
   getMainichi();
   getNikkei();
+  getSankei();
 })();

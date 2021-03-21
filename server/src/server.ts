@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Redis from 'ioredis';
-import { getSankei } from './getSankei';
 import { getYomiuri } from './getYomiuri';
 import { getHokkoku } from './getHokkoku';
 
@@ -65,14 +64,19 @@ app.get('/api/nikkei', async (req, res) => {
 });
 
 // sankei
-app.get('/api/sankei', getSankei);
+app.get('/api/sankei', async (req, res) => {
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get('sankei');
+  res.json(JSON.parse(data!));
+  console.log('took sankei from redis at ' + currentTime);
+});
 
 // asahi
 app.get('/api/asahi', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('asahi');
   res.json(JSON.parse(data!));
-  console.log('took data from redis at ' + currentTime);
+  console.log('took asahi from redis at ' + currentTime);
 });
 
 // yomiuri
