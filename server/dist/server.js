@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const dayjs_1 = __importDefault(require("dayjs"));
 const utc_1 = __importDefault(require("dayjs/plugin/utc"));
 const timezone_1 = __importDefault(require("dayjs/plugin/timezone"));
@@ -21,6 +22,7 @@ dayjs_1.default.extend(utc_1.default);
 dayjs_1.default.extend(timezone_1.default);
 const redis = new ioredis_1.default(process.env.REDIS_URL);
 const app = express_1.default();
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/build')));
 const port = process.env.PORT || 8080;
 app.get('/api/yahoo', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
@@ -82,6 +84,9 @@ app.get('/api/hokkoku', (req, res) => __awaiter(void 0, void 0, void 0, function
     res.json(JSON.parse(data));
     console.log('took hokkoku from redis at ' + currentTime);
 }));
+app.get('*', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../../client/build/index.html'));
+});
 app.listen(port, () => {
     console.log(`running on PORT ${port}`);
 });

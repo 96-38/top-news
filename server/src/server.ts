@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -11,6 +12,7 @@ dayjs.extend(timezone);
 const redis = new Redis(process.env.REDIS_URL);
 
 const app = express();
+app.use(express.static(path.join(__dirname, '../../client/build')));
 const port = process.env.PORT || 8080;
 
 //Yahoo News
@@ -91,6 +93,10 @@ app.get('/api/hokkoku', async (req, res) => {
   const data = await redis.get('hokkoku');
   res.json(JSON.parse(data!));
   console.log('took hokkoku from redis at ' + currentTime);
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/build/index.html'));
 });
 
 //listen port

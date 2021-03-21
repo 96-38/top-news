@@ -25,7 +25,10 @@ const getLivedoor = () => __awaiter(void 0, void 0, void 0, function* () {
     dayjs_1.default.extend(timezone_1.default);
     const now = dayjs_1.default().tz('Asia/Tokyo').format('YYYY/MM/DD_HH:mm:ss');
     console.log(`get Livedoor at ${now}`);
-    const browser = yield puppeteer_1.default.launch();
+    const launchConfig = {
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    };
+    const browser = yield puppeteer_1.default.launch(launchConfig);
     const page = yield browser.newPage();
     yield page.setRequestInterception(true);
     page.on('request', (request) => {
