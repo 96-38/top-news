@@ -7,6 +7,7 @@ import { getMainichi } from './getMainichi';
 import { getNikkei } from './getNikkei';
 import { getSankei } from './getSankei';
 import { getYomiuri } from './getYomiuri';
+import { getHokkoku } from './getHokkoku';
 
 (() => {
   getAsahi();
@@ -18,4 +19,5 @@ import { getYomiuri } from './getYomiuri';
   getNikkei();
   getSankei();
   getYomiuri();
+  getHokkoku();
 })();

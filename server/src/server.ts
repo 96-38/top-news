@@ -3,16 +3,15 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Redis from 'ioredis';
-import { getHokkoku } from './getHokkoku';
 
 //dayjs
 dayjs.extend(utc);
 dayjs.extend(timezone);
-
 //redis
 const redis = new Redis(process.env.REDIS_URL);
 
 const app = express();
+const port = process.env.PORT || 8080;
 
 //Yahoo News
 app.get('/api/yahoo', async (req, res) => {
@@ -87,9 +86,14 @@ app.get('/api/yomiuri', async (req, res) => {
 });
 
 // hokkoku
-app.get('/api/hokkoku', getHokkoku);
+app.get('/api/hokkoku', async (req, res) => {
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get('hokkoku');
+  res.json(JSON.parse(data!));
+  console.log('took hokkoku from redis at ' + currentTime);
+});
 
 //listen port
-app.listen(8080, () => {
-  console.log('running on PORT:8080');
+app.listen(port, () => {
+  console.log(`running on PORT ${port}`);
 });
