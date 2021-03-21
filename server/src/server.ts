@@ -1,4 +1,8 @@
 import express from 'express';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import Redis from 'ioredis';
 import { getYahoo } from './getYahoo';
 import { getNhk } from './getNhk';
 import { getLivedoor } from './getLivedoor';
@@ -6,9 +10,15 @@ import { getExcite } from './getExcite';
 import { getMainichi } from './getMainichi';
 import { getNikkei } from './getNikkei';
 import { getSankei } from './getSankei';
-import { getAsahi } from './getAsahi';
 import { getYomiuri } from './getYomiuri';
 import { getHokkoku } from './getHokkoku';
+
+//dayjs
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+//redis
+const redis = new Redis(process.env.REDIS_URL);
 
 const app = express();
 
@@ -34,7 +44,13 @@ app.get('/api/nikkei', getNikkei);
 app.get('/api/sankei', getSankei);
 
 // asahi
-app.get('/api/asahi', getAsahi);
+app.get('/api/asahi', async (req, res) => {
+  const now = dayjs().tz('Asia/Tokyo').format('YYYY_MM_DD_HH');
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get(`asahi_${now}`);
+  res.json(JSON.parse(data!));
+  console.log('took data from redis at ' + currentTime);
+});
 
 // yomiuri
 app.get('/api/yomiuri', getYomiuri);
