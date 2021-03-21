@@ -22,6 +22,8 @@
 
 - [Puppeteer](https://github.com/puppeteer/puppeteer)
 
+- [ioredis](https://github.com/luin/ioredis)
+
 - [Express](https://github.com/expressjs/express)
 
 - [Node.js](https://github.com/nodejs/node)
@@ -29,16 +31,13 @@
 
 ## ローカル環境での起動方法
 
-Express を使用するサーバー と React の開発サーバー(webpack-dev-server) の 2 つを起動する必要があります。<br>リポジトリをローカルにクローンした後、ターミナルを 2 窓用意して top-news ディレクトリでそれぞれ以下のコマンドを実行して下さい。
+**ローカル環境に [Redis](https://redis.io/download) サーバが起動している必要があります。**
 
+次のコマンドを実行すると http://localhost:8080/ に起動します。
 ```
-cd server
-yarn
-yarn start
-```
-
-```
-cd client
-yarn
-yarn start
+git clone https://github.com/96-38/top-news.git
+cd top-news
+yarn build
+node server/dist/getData.js
+node server/dist/server.js
 ```
