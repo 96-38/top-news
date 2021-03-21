@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Redis from 'ioredis';
-import { getMainichi } from './getMainichi';
 import { getNikkei } from './getNikkei';
 import { getSankei } from './getSankei';
 import { getYomiuri } from './getYomiuri';
@@ -23,7 +22,7 @@ app.get('/api/yahoo', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('yahoo');
   res.json(JSON.parse(data!));
-  console.log('took data from redis at ' + currentTime);
+  console.log('took yahoo from redis at ' + currentTime);
 });
 
 //NHK News
@@ -31,7 +30,7 @@ app.get('/api/nhk', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('nhk');
   res.json(JSON.parse(data!));
-  console.log('took data from redis at ' + currentTime);
+  console.log('took nhk from redis at ' + currentTime);
 });
 
 //Livedoor News
@@ -39,7 +38,7 @@ app.get('/api/livedoor', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('livedoor');
   res.json(JSON.parse(data!));
-  console.log('took data from redis at ' + currentTime);
+  console.log('took livedoor from redis at ' + currentTime);
 });
 
 //excite News
@@ -47,11 +46,16 @@ app.get('/api/excite', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('excite');
   res.json(JSON.parse(data!));
-  console.log('took data from redis at ' + currentTime);
+  console.log('took excite from redis at ' + currentTime);
 });
 
 // mainichi
-app.get('/api/mainichi', getMainichi);
+app.get('/api/mainichi', async (req, res) => {
+  const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
+  const data = await redis.get('mainichi');
+  res.json(JSON.parse(data!));
+  console.log('took mainichi from redis at ' + currentTime);
+});
 
 // nikkei
 app.get('/api/nikkei', getNikkei);

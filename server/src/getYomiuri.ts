@@ -32,6 +32,7 @@ export const getYomiuri = (req, res) => {
       }
     });
 
+    //各カテゴリのトップニュースを取得
     const titleSelector = '.home-2020-prime-topnews > h3 > a';
     const anchorSelector = '.home-2020-prime-topnews > h3 > a';
     const url = 'https://www.yomiuri.co.jp/';
