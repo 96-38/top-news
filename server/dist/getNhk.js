@@ -49,12 +49,17 @@ const getNhk = () => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
     const titleSelector = '.content--list li em';
+    const titleSelector2 = '.content--header .content--summary .content--header-title > a > em';
     const anchorSelector = '.content--list li dd > a ';
+    const anchorSelector2 = '.content--header .content--summary .content--header-title > a ';
     const imgSelector = '.content--list > li > dl > dt > a > img ';
+    const imgSelector2 = '.content--header .content--thumb > a > img';
     const url = 'https://www3.nhk.or.jp/news/';
     const newsArray = yield getElms_1.getElms(page, url, titleSelector, anchorSelector, imgSelector);
+    const newsArray2 = yield getElms_1.getElms(page, url, titleSelector2, anchorSelector2, imgSelector2);
+    const newsArray3 = [...newsArray2, ...newsArray];
     const redis = new ioredis_1.default(process.env.REDIS_URL);
-    yield redis.set('nhk', JSON.stringify(newsArray));
+    yield redis.set('nhk', JSON.stringify(newsArray3));
     yield browser.close();
     redis.disconnect();
     console.log('Took', Date.now() - start, 'ms (NHK)');

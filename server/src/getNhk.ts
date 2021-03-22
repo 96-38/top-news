@@ -42,8 +42,13 @@ export const getNhk = async () => {
   });
 
   const titleSelector = '.content--list li em';
+  const titleSelector2 =
+    '.content--header .content--summary .content--header-title > a > em';
   const anchorSelector = '.content--list li dd > a ';
+  const anchorSelector2 =
+    '.content--header .content--summary .content--header-title > a ';
   const imgSelector = '.content--list > li > dl > dt > a > img ';
+  const imgSelector2 = '.content--header .content--thumb > a > img';
   const url = 'https://www3.nhk.or.jp/news/';
   const newsArray = await getElms(
     page,
@@ -52,10 +57,19 @@ export const getNhk = async () => {
     anchorSelector,
     imgSelector
   );
+  const newsArray2 = await getElms(
+    page,
+    url,
+    titleSelector2,
+    anchorSelector2,
+    imgSelector2
+  );
+
+  const newsArray3 = [...newsArray2, ...newsArray];
 
   //store json to redis
   const redis = new Redis(process.env.REDIS_URL);
-  await redis.set('nhk', JSON.stringify(newsArray));
+  await redis.set('nhk', JSON.stringify(newsArray3));
 
   await browser.close();
   redis.disconnect();
