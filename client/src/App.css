@@ -31,13 +31,14 @@
   width: 45rem;
 }
 
-.section {
+/* .section {
   text-align: center;
   font-size: 3rem;
   font-family: 'Futura';
-  padding-top: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
   font-weight: bold;
-}
+} */
 
 .yahoo {
   min-height: 1040px;
