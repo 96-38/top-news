@@ -9,15 +9,24 @@ interface CardProps {
 }
 
 export const Card = (props: CardProps) => {
-  //改行による font-size の調整
+  //改行による font-size の調整 (記事タイトルが 4 行になる時 3 行に収める)
   useEffect(() => {
+    const vw = window.innerWidth;
     const list = document.querySelectorAll<HTMLElement>('.card__text__shop');
-    list.forEach((node) => {
-      const height = node.offsetHeight;
-      if (height > 200) {
-        node.classList.add('fontSize_s');
-      }
-    });
+    const adjustFontSize = (domHeight: number) => {
+      list.forEach((node) => {
+        const height = node.offsetHeight;
+        if (height > domHeight) {
+          node.classList.add('fontSize_s');
+        }
+      });
+    };
+    adjustFontSize(150);
+    if (vw < 769) {
+      adjustFontSize(83);
+    } else if (vw < 1106) {
+      adjustFontSize(110);
+    }
   }, []);
 
   const { title, link, img, target, fontSize, fontWeight } = props;
