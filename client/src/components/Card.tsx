@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import './css/card.css';
 import '../reset.css';
 import news from './img/news.png';
@@ -8,6 +9,17 @@ interface CardProps {
 }
 
 export const Card = (props: CardProps) => {
+  //改行による font-size の調整
+  useEffect(() => {
+    const list = document.querySelectorAll<HTMLElement>('.card__text__shop');
+    list.forEach((node) => {
+      const height = node.offsetHeight;
+      if (height > 200) {
+        node.classList.add('fontSize_s');
+      }
+    });
+  }, []);
+
   const { title, link, img, target, fontSize, fontWeight } = props;
   const style = { fontSize, fontWeight };
   return (
@@ -21,7 +33,6 @@ export const Card = (props: CardProps) => {
             <p className="card__text__shop" style={style}>
               {title}
             </p>
-            {/* <p className="card__text__distance">1.9km</p> */}
           </div>
         </div>
       </a>

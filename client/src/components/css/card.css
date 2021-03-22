@@ -53,13 +53,11 @@
 .card__text__shop {
   width: calc(40rem - 13.4375rem);
   overflow: hidden;
-  /* font-size: 2.5rem; */
   /* line-height: 13.4375rem; */
   /* text-align: center; */
   /* text-overflow: ellipsis; */
   /* white-space: nowrap; */
-
-  line-height: 2.5rem;
+  line-height: 3.25rem;
   width: 90%;
   font-family: 'Hiragino Sans';
 }
@@ -71,4 +69,8 @@
   display: inline-block;
   font-size: 1.875rem;
   color: #696969;
+}
+
+.fontSize_s {
+  font-size: 1.7rem !important;
 }
