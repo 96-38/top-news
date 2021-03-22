@@ -25,9 +25,10 @@
   -ms-flex-align: center;
   align-items: center;
   height: 6.25rem;
+  text-decoration: none;
 }
 
-.header__logo__title {
+.header__logo h1 {
   margin-left: 10px;
   font-size: 3.125rem;
   font-weight: bold;

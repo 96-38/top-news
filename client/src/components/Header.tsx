@@ -8,12 +8,10 @@ export const Header = () => {
     <>
       <header className="header">
         <div className="header__inner">
-          <div className="header__logo">
+          <a className="header__logo" href="./">
             <img className="header__logo__img" src={logo} alt="logo" />
-            <a className="header__logo__title" href="./">
-              <h1>Top News</h1>
-            </a>
-          </div>
+            <h1>Top News</h1>
+          </a>
         </div>
       </header>
     </>
