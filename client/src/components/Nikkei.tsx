@@ -34,7 +34,7 @@ export const Nikkei = () => {
               link={data.href}
               img={data.srcset || nikkei}
               target="_blank"
-              fontSize="1.5rem"
+              fontSize="1.9rem"
               fontWeight="normal"
             />
           ))}

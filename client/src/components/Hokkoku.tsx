@@ -34,7 +34,7 @@ export const Hokkoku = () => {
               link={data.href}
               img={hokkoku}
               target="_blank"
-              fontSize="1.5rem"
+              fontSize="1.9rem"
               fontWeight="normal"
             />
           ))}

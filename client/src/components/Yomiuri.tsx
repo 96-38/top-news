@@ -34,7 +34,7 @@ export const Yomiuri = () => {
               link={data.href}
               img={yomiuri}
               target="_blank"
-              fontSize="1.5rem"
+              fontSize="1.9rem"
               fontWeight="normal"
             />
           ))}

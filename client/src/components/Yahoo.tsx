@@ -31,7 +31,7 @@ export const Yahoo = () => {
               link={data.href}
               img={yahooNews}
               target="_blank"
-              fontSize="1.5rem"
+              fontSize="1.9rem"
               fontWeight="normal"
             />
           ))}

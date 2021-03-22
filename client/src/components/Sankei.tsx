@@ -34,7 +34,7 @@ export const Sankei = () => {
               link={data.href}
               img={data.src || sankei}
               target="_blank"
-              fontSize="1.5rem"
+              fontSize="1.9rem"
               fontWeight="normal"
             />
           ))}

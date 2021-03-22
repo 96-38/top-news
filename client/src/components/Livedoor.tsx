@@ -31,7 +31,7 @@ export const Livedoor = () => {
               link={data.href}
               img={livedoorNews}
               target="_blank"
-              fontSize="1.5rem"
+              fontSize="1.9rem"
               fontWeight="normal"
             />
           ))}
