@@ -22,7 +22,7 @@ export const Yahoo = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">Yahoo! ニュース</h2>
+        <h2 className="section">{/* Yahoo! ニュース */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

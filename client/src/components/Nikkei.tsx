@@ -25,7 +25,7 @@ export const Nikkei = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">日経新聞</h2>
+        <h2 className="section">{/* 日経新聞 */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

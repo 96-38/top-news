@@ -23,7 +23,7 @@ export const Excite = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">excite ニュース</h2>
+        <h2 className="section">{/* excite ニュース */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

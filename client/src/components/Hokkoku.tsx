@@ -25,7 +25,7 @@ export const Hokkoku = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">北國新聞</h2>
+        <h2 className="section">{/* 北國新聞 */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

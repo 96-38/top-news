@@ -25,7 +25,7 @@ export const Sankei = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">産経新聞</h2>
+        <h2 className="section">{/* 産経新聞 */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

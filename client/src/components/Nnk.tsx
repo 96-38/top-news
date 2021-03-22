@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
+import nhk from './img/nhk_topic.png';
 
 export const Nhk = () => {
   const [data, setData] = useState<{ [key: string]: string }[]>([]);
@@ -21,14 +22,14 @@ export const Nhk = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">NHK ニュース</h2>
+        <h2 className="section">{/* NHK ニュース */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card
               key={data.textContent}
               title={data.textContent}
               link={data.href}
-              img={data.src}
+              img={data.src || nhk}
               target="_blank"
               fontSize="1.9rem"
               fontWeight="normal"

@@ -4,6 +4,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import asahi from './img/asahi.png'; //modify here
+// import logo from './img/logo/asahi_logo.svg';
 
 //modify component Name
 export const Asahi = () => {
@@ -25,7 +26,7 @@ export const Asahi = () => {
   return (
     <>
       <div className="inner">
-        <h2 className="section">朝日新聞</h2>
+        <h2 className="section">{/* 朝日新聞 */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card
