@@ -50,7 +50,10 @@ export const getElms: GetElms = async (
         data.push(item);
       }
 
-      return data;
+      //重複を除外
+      // @ts-ignore
+      const uniqueData = [...new Set(data.map(JSON.stringify))].map(JSON.parse);
+      return uniqueData;
     },
     titleSelector,
     linkSelector,

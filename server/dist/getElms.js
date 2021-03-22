@@ -38,7 +38,8 @@ const getElms = (page, url, titleSelector, linkSelector, imgSelector) => __await
             let item = Object.assign(Object.assign(Object.assign({}, titles[index]), links[index]), src[index]);
             data.push(item);
         }
-        return data;
+        const uniqueData = [...new Set(data.map(JSON.stringify))].map(JSON.parse);
+        return uniqueData;
     }, titleSelector, linkSelector, imgSelector);
 });
 exports.getElms = getElms;
