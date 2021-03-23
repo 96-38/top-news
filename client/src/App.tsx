@@ -90,13 +90,13 @@ const Home = () => {
       src: hokkoku,
       target: '_self',
     },
+    { title: 'NHK ニュース', href: './nhk', src: nhkNews, target: '_self' },
     {
       title: 'Yahoo! ニュース',
       href: './yahoo',
       src: yahooNews,
       target: '_self',
     },
-    { title: 'NHK ニュース', href: './nhk', src: nhkNews, target: '_self' },
     {
       title: 'livedoor ニュース',
       href: './livedoor',
