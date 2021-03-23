@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 .inner {
   animation: fade 0.8s ease-in;
   padding-top: 8rem;
