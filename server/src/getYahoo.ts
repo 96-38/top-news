@@ -44,10 +44,22 @@ export const getYahoo = async () => {
     }
   });
 
-  const titleSelector = '.topics li';
-  const anchorSelector = '.topics li a ';
-  const url = 'https://news.yahoo.co.jp/';
-  const newsArray = await getElms(page, url, titleSelector, anchorSelector);
+  // const titleSelector = '.topics li';
+  const titleSelector =
+    '.newsFeed_list > .newsFeed_item > .newsFeed_item_link > .newsFeed_item_text > .newsFeed_item_title';
+  // const anchorSelector = '.topics li a ';
+  const anchorSelector = '.newsFeed_list > .newsFeed_item > a';
+  const imgSelector =
+    '.newsFeed_list > .newsFeed_item > .newsFeed_item_link > .newsFeed_item_thumbnail img';
+  // const url = 'https://news.yahoo.co.jp/';
+  const url = 'https://news.yahoo.co.jp/topics/top-picks';
+  const newsArray = await getElms(
+    page,
+    url,
+    titleSelector,
+    anchorSelector,
+    imgSelector
+  );
 
   //store json to redis
   const redis = new Redis(process.env.REDIS_URL);
@@ -57,3 +69,5 @@ export const getYahoo = async () => {
   redis.disconnect();
   console.log('Took', Date.now() - start, 'ms (yahoo)');
 };
+
+getYahoo();

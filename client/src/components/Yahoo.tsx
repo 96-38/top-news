@@ -40,7 +40,7 @@ export const Yahoo = () => {
               key={data.textContent}
               title={data.textContent}
               link={data.href}
-              img={yahooNews}
+              img={data.src || yahooNews}
               target="_blank"
               fontSize="1.9rem"
               fontWeight="normal"

@@ -51,10 +51,11 @@ const getYahoo = () => __awaiter(void 0, void 0, void 0, function* () {
             request.continue();
         }
     });
-    const titleSelector = '.topics li';
-    const anchorSelector = '.topics li a ';
-    const url = 'https://news.yahoo.co.jp/';
-    const newsArray = yield getElms_1.getElms(page, url, titleSelector, anchorSelector);
+    const titleSelector = '.newsFeed_list > .newsFeed_item > .newsFeed_item_link > .newsFeed_item_text > .newsFeed_item_title';
+    const anchorSelector = '.newsFeed_list > .newsFeed_item > a';
+    const imgSelector = '.newsFeed_list > .newsFeed_item > .newsFeed_item_link > .newsFeed_item_thumbnail img';
+    const url = 'https://news.yahoo.co.jp/topics/top-picks';
+    const newsArray = yield getElms_1.getElms(page, url, titleSelector, anchorSelector, imgSelector);
     const redis = new ioredis_1.default(process.env.REDIS_URL);
     yield redis.set('yahoo', JSON.stringify(newsArray));
     yield browser.close();
@@ -62,4 +63,5 @@ const getYahoo = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Took', Date.now() - start, 'ms (yahoo)');
 });
 exports.getYahoo = getYahoo;
+exports.getYahoo();
 //# sourceMappingURL=getYahoo.js.map
