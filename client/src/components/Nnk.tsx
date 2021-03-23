@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Header } from './Header';
 import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
@@ -16,13 +17,23 @@ export const Nhk = () => {
     getData().then((response) => setData(response));
   }, []);
 
+  const headerProps = {
+    pageTitle: 'NHK',
+  };
+
   if (!data?.length) {
-    return <Loader />;
+    return (
+      <>
+        <Header {...headerProps} />;
+        <Loader />
+      </>
+    );
   }
+
   return (
     <>
+      <Header {...headerProps} />;
       <div className="inner">
-        <h2 className="section">{/* NHK ニュース */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

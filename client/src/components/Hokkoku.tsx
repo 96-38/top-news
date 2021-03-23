@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Header } from './Header';
 import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
@@ -18,14 +19,23 @@ export const Hokkoku = () => {
     getData().then((response) => setData(response));
   }, []);
 
-  //modify section text
+  const headerProps = {
+    pageTitle: '北國新聞',
+  };
+
   if (!data?.length) {
-    return <Loader />;
+    return (
+      <>
+        <Header {...headerProps} />;
+        <Loader />
+      </>
+    );
   }
+
   return (
     <>
+      <Header {...headerProps} />;
       <div className="inner">
-        <h2 className="section">{/* 北國新聞 */}</h2>
         <div className="container">
           {data?.map((data) => (
             <Card

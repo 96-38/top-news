@@ -31,7 +31,6 @@ import hokkoku from './components/img/hokkoku.jpg';
 function App() {
   return (
     <Router>
-      <Header />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/mainichi" component={Mainichi} />
@@ -48,6 +47,10 @@ function App() {
     </Router>
   );
 }
+
+const headerProps = {
+  pageTitle: 'Top News',
+};
 
 const Home = () => {
   const dataArr = [
@@ -95,7 +98,7 @@ const Home = () => {
     },
     { title: 'NHK ニュース', href: './nhk', src: nhkNews, target: '_self' },
     {
-      title: 'Livedoor ニュース',
+      title: 'livedoor ニュース',
       href: './livedoor',
       src: livedoorNews,
       target: '_self',
@@ -108,21 +111,24 @@ const Home = () => {
     },
   ];
   return (
-    <div className="inner">
-      <div className="container">
-        {dataArr.map((data) => (
-          <Card
-            key={data.title}
-            title={data.title}
-            link={data.href}
-            img={data.src}
-            target={data.target}
-            fontSize="2.5rem"
-            fontWeight="bold"
-          />
-        ))}
+    <>
+      <Header {...headerProps} />
+      <div className="inner">
+        <div className="container">
+          {dataArr.map((data) => (
+            <Card
+              key={data.title}
+              title={data.title}
+              link={data.href}
+              img={data.src}
+              target={data.target}
+              fontSize="2.5rem"
+              fontWeight="bold"
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
