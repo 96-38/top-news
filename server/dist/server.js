@@ -27,61 +27,61 @@ const port = process.env.PORT || 8080;
 app.get('/api/yahoo', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('yahoo');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took yahoo from redis at ' + currentTime);
 }));
 app.get('/api/nhk', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('nhk');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took nhk from redis at ' + currentTime);
 }));
 app.get('/api/livedoor', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('livedoor');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took livedoor from redis at ' + currentTime);
 }));
 app.get('/api/excite', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('excite');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took excite from redis at ' + currentTime);
 }));
 app.get('/api/mainichi', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('mainichi');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took mainichi from redis at ' + currentTime);
 }));
 app.get('/api/nikkei', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('nikkei');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took nikkei from redis at ' + currentTime);
 }));
 app.get('/api/sankei', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('sankei');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took sankei from redis at ' + currentTime);
 }));
 app.get('/api/asahi', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('asahi');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took asahi from redis at ' + currentTime);
 }));
 app.get('/api/yomiuri', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('yomiuri');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took yomiuri from redis at ' + currentTime);
 }));
 app.get('/api/hokkoku', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = dayjs_1.default().tz('Asia/Tokyo').format('HH:mm:ss');
     const data = yield redis.get('hokkoku');
-    res.json(JSON.parse(data));
+    yield res.json(JSON.parse(data));
     console.log('took hokkoku from redis at ' + currentTime);
 }));
 app.get('*', (req, res) => {

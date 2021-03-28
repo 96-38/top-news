@@ -19,7 +19,7 @@ const port = process.env.PORT || 8080;
 app.get('/api/yahoo', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('yahoo');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took yahoo from redis at ' + currentTime);
 });
 
@@ -27,7 +27,7 @@ app.get('/api/yahoo', async (req, res) => {
 app.get('/api/nhk', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('nhk');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took nhk from redis at ' + currentTime);
 });
 
@@ -35,7 +35,7 @@ app.get('/api/nhk', async (req, res) => {
 app.get('/api/livedoor', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('livedoor');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took livedoor from redis at ' + currentTime);
 });
 
@@ -43,7 +43,7 @@ app.get('/api/livedoor', async (req, res) => {
 app.get('/api/excite', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('excite');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took excite from redis at ' + currentTime);
 });
 
@@ -51,7 +51,7 @@ app.get('/api/excite', async (req, res) => {
 app.get('/api/mainichi', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('mainichi');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took mainichi from redis at ' + currentTime);
 });
 
@@ -59,7 +59,7 @@ app.get('/api/mainichi', async (req, res) => {
 app.get('/api/nikkei', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('nikkei');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took nikkei from redis at ' + currentTime);
 });
 
@@ -67,7 +67,7 @@ app.get('/api/nikkei', async (req, res) => {
 app.get('/api/sankei', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('sankei');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took sankei from redis at ' + currentTime);
 });
 
@@ -75,7 +75,7 @@ app.get('/api/sankei', async (req, res) => {
 app.get('/api/asahi', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('asahi');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took asahi from redis at ' + currentTime);
 });
 
@@ -83,7 +83,7 @@ app.get('/api/asahi', async (req, res) => {
 app.get('/api/yomiuri', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('yomiuri');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took yomiuri from redis at ' + currentTime);
 });
 
@@ -91,7 +91,7 @@ app.get('/api/yomiuri', async (req, res) => {
 app.get('/api/hokkoku', async (req, res) => {
   const currentTime = dayjs().tz('Asia/Tokyo').format('HH:mm:ss');
   const data = await redis.get('hokkoku');
-  res.json(JSON.parse(data!));
+  await res.json(JSON.parse(data!));
   console.log('took hokkoku from redis at ' + currentTime);
 });
 
