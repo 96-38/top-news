@@ -59,7 +59,9 @@ const getNhk = () => __awaiter(void 0, void 0, void 0, function* () {
     const newsArray2 = yield getElms_1.getElms(page, url, titleSelector2, anchorSelector2, imgSelector2);
     const newsArray3 = [...newsArray2, ...newsArray];
     const redis = new ioredis_1.default(process.env.REDIS_URL);
-    yield redis.set('nhk', JSON.stringify(newsArray3));
+    if (newsArray3.length) {
+        yield redis.set('nhk', JSON.stringify(newsArray3));
+    }
     yield browser.close();
     redis.disconnect();
     console.log('Took', Date.now() - start, 'ms (NHK)');

@@ -69,8 +69,9 @@ export const getNhk = async () => {
 
   //store json to redis
   const redis = new Redis(process.env.REDIS_URL);
-  await redis.set('nhk', JSON.stringify(newsArray3));
-
+  if (newsArray3.length) {
+    await redis.set('nhk', JSON.stringify(newsArray3));
+  }
   await browser.close();
   redis.disconnect();
   console.log('Took', Date.now() - start, 'ms (NHK)');
