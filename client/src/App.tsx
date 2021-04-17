@@ -27,6 +27,7 @@ import sankei from './components/img/sankei.png';
 import asahi from './components/img/asahi.png';
 import yomiuri from './components/img/yomiuri.png';
 import hokkoku from './components/img/hokkoku.jpg';
+import appIcon from './components/img/appIcon.svg';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
 
 const headerProps = {
   pageTitle: 'Top News',
+  icon: appIcon,
 };
 
 const Home = () => {

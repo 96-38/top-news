@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import exciteNews from './img/exciteNews.png'; //modify here
+import backArrow from './img/backArrow.png';
 
 export const Excite = () => {
   //modify here
@@ -20,6 +21,7 @@ export const Excite = () => {
 
   const headerProps = {
     pageTitle: 'excite',
+    icon: backArrow,
   };
 
   if (!data?.length) {

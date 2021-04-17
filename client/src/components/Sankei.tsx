@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import sankei from './img/sankei.png'; //modify here
+import backArrow from './img/backArrow.png';
 
 //modify component Name
 export const Sankei = () => {
@@ -21,6 +22,7 @@ export const Sankei = () => {
 
   const headerProps = {
     pageTitle: '産経新聞',
+    icon: backArrow,
   };
 
   if (!data?.length) {

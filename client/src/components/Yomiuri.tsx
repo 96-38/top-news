@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import yomiuri from './img/yomiuri.png'; //modify here
+import backArrow from './img/backArrow.png';
 
 //modify component Name
 export const Yomiuri = () => {
@@ -21,6 +22,7 @@ export const Yomiuri = () => {
 
   const headerProps = {
     pageTitle: '読売新聞',
+    icon: backArrow,
   };
 
   if (!data?.length) {

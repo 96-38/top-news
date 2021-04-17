@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import mainichi from './img/mainichi.png'; //modify here
+import backArrow from './img/backArrow.png';
 
 //modify component Name
 export const Mainichi = () => {
@@ -21,6 +22,7 @@ export const Mainichi = () => {
 
   const headerProps = {
     pageTitle: '毎日新聞',
+    icon: backArrow,
   };
 
   if (!data?.length) {

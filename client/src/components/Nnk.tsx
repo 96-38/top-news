@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import nhk from './img/nhk_topic.png';
+import backArrow from './img/backArrow.png';
 
 export const Nhk = () => {
   const [data, setData] = useState<{ [key: string]: string }[]>([]);
@@ -19,6 +20,7 @@ export const Nhk = () => {
 
   const headerProps = {
     pageTitle: 'NHK',
+    icon: backArrow,
   };
 
   if (!data?.length) {

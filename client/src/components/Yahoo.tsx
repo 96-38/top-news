@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import yahooNews from './img/yahooNews.png';
+import backArrow from './img/backArrow.png';
 
 export const Yahoo = () => {
   const [data, setData] = useState<{ [key: string]: string }[]>([]);
@@ -19,6 +20,7 @@ export const Yahoo = () => {
 
   const headerProps = {
     pageTitle: 'Yahoo!',
+    icon: backArrow,
   };
 
   if (!data?.length) {

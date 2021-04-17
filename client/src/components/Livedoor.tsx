@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import livedoorNews from './img/livedoorNews.png';
+import backArrow from './img/backArrow.png';
 
 export const Livedoor = () => {
   const [data, setData] = useState<{ [key: string]: string }[]>([]);
@@ -19,6 +20,7 @@ export const Livedoor = () => {
 
   const headerProps = {
     pageTitle: 'livedoor',
+    icon: backArrow,
   };
 
   if (!data?.length) {

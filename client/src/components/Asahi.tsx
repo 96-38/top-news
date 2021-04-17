@@ -6,6 +6,7 @@ import { Card } from './Card';
 import '../App.css';
 import asahi from './img/asahi.png'; //modify here
 // import logo from './img/logo/asahi_logo.svg';
+import backArrow from './img/backArrow.png';
 
 //modify component Name
 export const Asahi = () => {
@@ -22,6 +23,7 @@ export const Asahi = () => {
 
   const headerProps = {
     pageTitle: '朝日新聞',
+    icon: backArrow,
   };
 
   if (!data?.length) {

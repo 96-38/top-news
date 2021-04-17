@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { Card } from './Card';
 import '../App.css';
 import hokkoku from './img/hokkoku.jpg'; //modify here
+import backArrow from './img/backArrow.png';
 
 //modify component Name
 export const Hokkoku = () => {
@@ -21,6 +22,7 @@ export const Hokkoku = () => {
 
   const headerProps = {
     pageTitle: '北國新聞',
+    icon: backArrow,
   };
 
   if (!data?.length) {
