@@ -8,6 +8,14 @@
   text-decoration: none;
 }
 
+.card-wrapper a:visited {
+  color: #999;
+}
+
+.black {
+  color: #000 !important;
+}
+
 .card {
   display: -webkit-box;
   display: -ms-flexbox;

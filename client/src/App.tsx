@@ -1,5 +1,5 @@
 //modules
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //components
 import { Header } from './components/Header';
@@ -30,6 +30,13 @@ import hokkoku from './components/img/hokkoku.jpg';
 import appIcon from './components/img/appIcon.svg';
 
 function App() {
+  //ホーム画面では :visited の色を無効化
+  useEffect(() => {
+    const cards = document.querySelectorAll('.card-wrapper a');
+    cards.forEach((card) => {
+      card.classList.add('black');
+    });
+  });
   return (
     <Router>
       <Switch>
