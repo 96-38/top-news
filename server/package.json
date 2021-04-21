@@ -12,7 +12,7 @@
     "dayjs": "^1.10.4",
     "express": "^4.17.1",
     "ioredis": "^4.24.2",
-    "puppeteer": "^7.1.0"
+    "puppeteer": "^9.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
